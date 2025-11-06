@@ -9,7 +9,7 @@ import Cart from "./components/CartAndCheckout/cart";
 import Checkout from "./components/CartAndCheckout/checkout";
 import ProductDetails from "./components/Products/productDetails";
 import Profile from "./components/User/profile";
-import AddProduct from "./components/Products/addproduct";
+import AddProduct from "./components/Products/addProduct";
 import HomePage from "./components/InfoPages/HomePage";
 import SearchResults from "./components/Products/SearchResults";
 import OrderHistory from "./components/User/OrderHistory";
