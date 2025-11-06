@@ -21,8 +21,8 @@ const AddProduct = () => {
         dispatch(myProducts())
     }, [dispatch])
 
-    const myProducts = useSelector(state => state.product.myProducts)
-    console.log(myProducts)
+    const myProductsData = useSelector(state => state.product.myProducts)
+    console.log(myProductsData)
 
 
     const handleSubmit = async (e) => {
@@ -65,7 +65,7 @@ const AddProduct = () => {
 
                 <h1 className="text-xl font-bold text-center text-gray-800 my-8">Products Added</h1>
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-                    {myProducts && myProducts.map((product) => {
+                    {myProductsData && myProductsData.map((product) => {
                         return (
                             <div key={product._id} className="bg-white rounded-lg shadow-lg p-4">
                                 <img src={product.imageUrl} alt={product.name} className="w-full h-48 object-cover rounded-t-lg" />

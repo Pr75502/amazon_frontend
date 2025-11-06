@@ -54,7 +54,8 @@ export const searchProducts = createAsyncThunk('/products/search', async (query,
 })
 export const myProducts = createAsyncThunk('/products/myProducts', async (_, thunkAPI) => {
     try {
-        const response = await axios.get(`/products/myProducts`, {}, {
+        const token = localStorage.getItem('token');
+        const response = await axios.get(`/products/myProducts`, {
             headers: {
                 'Authorization': token
             }
@@ -62,7 +63,7 @@ export const myProducts = createAsyncThunk('/products/myProducts', async (_, thu
         return response.data;
     }
     catch (error) {
-        thunkAPI.rejectWithValue(error.response.data);
+        return thunkAPI.rejectWithValue(error.response.data);
     }
 })
     
