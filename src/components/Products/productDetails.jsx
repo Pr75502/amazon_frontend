@@ -4,6 +4,8 @@ import { useParams } from "react-router-dom";
 import { productDetails } from "../../features/productSlice";
 import { addToCart } from "../../features/cartSlice";
 import { toast } from "react-hot-toast";
+import Reviews from "./Reviews";
+import ReviewForm from "./ReviewForm";
 
 
 const ProductDetails = () => {
@@ -56,6 +58,10 @@ const ProductDetails = () => {
                         </div>
                     </div>
                 )}
+                <div className="mt-8">
+                    <ReviewForm productId={id} />
+                    <Reviews productId={id} />
+                </div>
             </div>
         </div>
     );

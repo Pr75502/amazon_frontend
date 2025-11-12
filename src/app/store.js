@@ -4,6 +4,9 @@ import productReducer from '../features/productSlice'
 import cartReducer from '../features/cartSlice'
 import paymentReducer from '../features/paymentSlice'
 import orderReducer from '../features/orderSlice'
+import reviewReducer from '../features/reviewSlice'
+import adminReducer from '../features/adminSlice'
+
 
 
 
@@ -15,5 +18,8 @@ export const store = configureStore({
     cart: cartReducer,
     payment: paymentReducer,
     order: orderReducer,
+    reviews: reviewReducer,
+    admin: adminReducer,
+  
   },
 })

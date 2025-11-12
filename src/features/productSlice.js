@@ -66,7 +66,49 @@ export const myProducts = createAsyncThunk('/products/myProducts', async (_, thu
         return thunkAPI.rejectWithValue(error.response.data);
     }
 })
+
+export const deleteProduct = createAsyncThunk('/products/delete', async (id, thunkAPI) => {
+    try {
+        const token = localStorage.getItem('token');
+        const response = await axios.delete(`/products/delete/${id}`, {
+            headers: {
+                'Authorization': token
+            }
+        });
+        return response.data;
+    }
+    catch (error) {
+        return thunkAPI.rejectWithValue(error.response.data);
+    }
+})
+
+export const updateProduct = createAsyncThunk('/products/update', async ({ id, ...productData }, thunkAPI) => {
+    try {
+        const token = localStorage.getItem('token');
+        const response = await axios.patch(`/products/update/${id}`, productData, {
+            headers: {
+                'Authorization': token
+            }
+        });
+        return response.data;
+    }
+    catch (error) {
+        return thunkAPI.rejectWithValue(error.response.data);
+    }
+})
     
+export const getSingleProduct = createAsyncThunk(
+    "products/getSingleProduct",
+    async (id, thunkAPI) => {
+        try {
+            const response = await axios.get(`/products/${id}`);
+            return response.data;
+        } catch (error) {
+            return thunkAPI.rejectWithValue(error.response.data);
+        }
+    }
+);
+
 
 
 
@@ -76,7 +118,8 @@ const productSlice = createSlice({
     initialState: {
         products: [],
         myProducts: [],
-        details:{},
+        details: {},
+        singleProduct: null,
         error: null,
     },
     reducers: {
@@ -132,18 +175,53 @@ const productSlice = createSlice({
                 state.error = action.payload.message;
             });
         builder
-        .addCase(myProducts.pending, (state) => {
+            .addCase(myProducts.pending, (state) => {
                 state.myProducts = [];
                 state.error = "loading...";
-        })
-        .addCase(myProducts.fulfilled, (state, action) => {
+            })
+            .addCase(myProducts.fulfilled, (state, action) => {
                 state.myProducts = action.payload.data;
                 state.error = null;
-        })
-        .addCase(myProducts.rejected, (state, action) => {
+            })
+            .addCase(myProducts.rejected, (state, action) => {
                 state.myProducts = [];
                 state.error = action.payload.message;
-        })
+            })
+            .addCase(deleteProduct.pending, (state) => {
+                state.error = "deleting...";
+            })
+            .addCase(deleteProduct.fulfilled, (state, action) => {
+                state.products = state.products.filter((product) => product._id !== action.payload.data._id);
+                state.myProducts = state.myProducts.filter((product) => product._id !== action.payload.data._id);
+                state.error = null;
+            })
+            .addCase(deleteProduct.rejected, (state, action) => {
+                state.error = action.payload.message;
+            })
+            .addCase(updateProduct.pending, (state) => {
+                state.error = "updating...";
+            })
+            .addCase(updateProduct.fulfilled, (state, action) => {
+                state.products = state.products.map((product) => product._id === action.payload.data._id ? action.payload.data : product);
+                state.myProducts = state.myProducts.map((product) => product._id === action.payload.data._id ? action.payload.data : product);
+                state.error = null;
+            })
+            .addCase(updateProduct.rejected, (state, action) => {
+                state.error = action.payload.message;
+            });
+        builder
+            .addCase(getSingleProduct.pending, (state) => {
+                state.singleProduct = null;
+                state.error = "loading...";
+            })
+            .addCase(getSingleProduct.fulfilled, (state, action) => {
+                state.singleProduct = action.payload.data;
+                state.error = null;
+            })
+            .addCase(getSingleProduct.rejected, (state, action) => {
+                state.singleProduct = null;
+                state.error = action.payload.message;
+            })
 
     }
 })

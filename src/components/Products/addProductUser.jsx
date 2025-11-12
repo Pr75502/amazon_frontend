@@ -1,11 +1,11 @@
 import { useEffect, useRef } from "react";
-import { addProduct } from "../../features/productSlice";
+import { addProduct, deleteProduct } from "../../features/productSlice";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { toast } from "react-hot-toast";
 import { myProducts } from "../../features/productSlice";
 
-const AddProduct = () => {
+const AddProductUser = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
@@ -44,6 +44,15 @@ const AddProduct = () => {
       imageUrlRef.current.value = "";
     } catch (error) {
       toast.error(error.message || "Failed to add product");
+    }
+  };
+
+  const handleDelete = async (id) => {
+    try {
+      await dispatch(deleteProduct(id)).unwrap();
+      toast.success("Product deleted successfully");
+    } catch (error) {
+      toast.error(error.message || "Failed to delete product");
     }
   };
   return (
@@ -112,15 +121,27 @@ const AddProduct = () => {
                     alt={product.name}
                     className="w-full h-48 object-cover rounded-t-lg"
                   />
-                  <div className="p-4">
-                    <h1 className="text-lg font-bold">{product.name}</h1>
-                    <p className="text-gray-600">{product.description}</p>
-                    <p className="text-gray-800 font-bold mt-2">
+                  <div class="p-4">
+                    <h1 class="text-lg font-bold">{product.name}</h1>
+                    <p class="text-gray-600">{product.description}</p>
+                    <p class="text-gray-800 font-bold mt-2">
                       ${product.price}
                     </p>
-                    <p className="text-sm text-gray-500 mt-1">
+                    <p class="text-sm text-gray-500 mt-1">
                       {product.category}
                     </p>
+                    <button
+                      onClick={() => navigate(`/edit-product/${product._id}`)}
+                      className="w-full bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded-lg mt-2"
+                    >
+                      Edit
+                    </button>
+                    <button
+                      onClick={() => handleDelete(product._id)}
+                      className="w-full bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded-lg mt-2"
+                    >
+                      Delete
+                    </button>
                   </div>
                 </div>
               );
@@ -130,4 +151,4 @@ const AddProduct = () => {
     </div>
   );
 };
-export default AddProduct;
+export default AddProductUser;
