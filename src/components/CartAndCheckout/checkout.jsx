@@ -3,6 +3,7 @@ import { useEffect, useState } from "react";
 import { getCartItems } from "../../features/cartSlice";
 import { createOrder, verifyPayment } from "../../features/paymentSlice";
 import { storeOrder } from "../../features/orderSlice";
+import { FaCreditCard } from "react-icons/fa";
 
 import { toast } from "react-hot-toast";
 
@@ -142,10 +143,10 @@ const loadRazorpayScript = (src) => {
                         <div className="bg-white shadow-lg rounded-lg p-6">
                             <h2 className="text-2xl font-bold text-gray-800 mb-6">Payment</h2>
                             <button
-                                className="bg-green-500 hover:bg-green-700 text-white font-bold py-3 px-6 rounded-lg w-full"
+                                className="bg-green-500 hover:bg-green-700 text-white font-bold py-3 px-6 rounded-lg w-full flex items-center justify-center gap-2"
                                 onClick={handlePayment}
                             >
-                                Pay Now
+                                <FaCreditCard /> Pay Now
                             </button>
                         </div>
                     </div>

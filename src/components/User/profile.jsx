@@ -2,6 +2,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import { useEffect, useRef, useState } from 'react';
 import { fetchById, editUserDetails, updateUserProfilePhoto } from '../../features/userSlice';
 import { toast } from 'react-hot-toast';
+import { FaUpload, FaSave, FaEdit } from 'react-icons/fa';
 
 const Profile = () => {
     const nameRef = useRef();
@@ -77,7 +78,9 @@ const Profile = () => {
                         <label className="block text-gray-700 font-semibold mb-2">Update Profile Photo</label>
                         <input type="file" onChange={(e) => setPhoto(e.target.files[0])} className="w-full p-2 border border-gray-300 rounded-lg" />
                     </div>
-                    <button type="submit" className="w-full bg-purple-500 hover:bg-purple-700 text-white font-bold py-2 px-4 rounded-lg">Upload Photo</button>
+                    <button type="submit" className="w-full bg-purple-500 hover:bg-purple-700 text-white font-bold py-2 px-4 rounded-lg flex items-center justify-center gap-2">
+                        <FaUpload /> Upload Photo
+                    </button>
                 </form>
 
                 {editId ? (
@@ -85,7 +88,9 @@ const Profile = () => {
                         <form onSubmit={handleSubmit} className="space-y-4">
                             <input type='text' placeholder='name' ref={nameRef} className="w-full p-2 border border-gray-300 rounded-lg" />
                             <input type='text' placeholder='address' ref={addressRef} className="w-full p-2 border border-gray-300 rounded-lg" />
-                            <button type='submit' className="w-full bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-lg">Submit</button>
+                            <button type='submit' className="w-full bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-lg flex items-center justify-center gap-2">
+                                <FaSave /> Submit
+                            </button>
                         </form>
                     </div>
                 ) : user && (
@@ -108,9 +113,9 @@ const Profile = () => {
                         </div>
                         <button
                             onClick={() => handleDetails(user._id)}
-                            className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-lg"
+                            className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-lg flex items-center justify-center gap-2"
                         >
-                            Edit User Details
+                            <FaEdit /> Edit User Details
                         </button>
                     </div>
                 )}

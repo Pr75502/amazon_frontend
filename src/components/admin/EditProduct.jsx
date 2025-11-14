@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { getSingleProduct, updateProduct } from "../../features/productSlice";
 import { useParams, useNavigate } from "react-router-dom";
 import { toast } from "react-hot-toast";
+import { FaSave } from "react-icons/fa";
 
 const EditProduct = () => {
   const { id } = useParams();
@@ -90,10 +91,10 @@ const EditProduct = () => {
           required
         />
 
-              <button className="w-full bg-green-600 text-white p-2 rounded hover:bg-green-700"
+              <button className="w-full bg-green-600 text-white p-2 rounded hover:bg-green-700 flex items-center justify-center gap-2"
              
               >
-          Update Product
+          <FaSave /> Update Product
         </button>
       </form>
     </div>

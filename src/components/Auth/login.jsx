@@ -3,6 +3,7 @@ import { useDispatch } from "react-redux"
 import { login } from "../../features/userSlice";
 import { toast } from "react-hot-toast"
 import { useNavigate } from "react-router-dom"
+import { FaSignInAlt } from "react-icons/fa";
 
 
 
@@ -45,7 +46,9 @@ const Login = () => {
                         <label htmlFor="password" className="block text-gray-700 font-semibold mb-2">Password</label>
                         <input type="password" placeholder="Password" ref={passwordRef} className="w-full p-2 border border-gray-300 rounded-lg" />
                     </div>
-                    <button type="submit" className="w-full bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-lg">Login</button>
+                    <button type="submit" className="w-full bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-lg flex items-center justify-center gap-2">
+                        <FaSignInAlt /> Login
+                    </button>
                 </form>
                 <p className="text-center mt-4">
                     Don't have an account? <a href="/signup" className="text-blue-500 hover:underline">Sign up</a>

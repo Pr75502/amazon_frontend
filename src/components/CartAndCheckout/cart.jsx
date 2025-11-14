@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from "react-redux"
 import { removeFromCart, getCartItems } from "../../features/cartSlice";
 import { useNavigate } from "react-router-dom"
 import { toast } from "react-hot-toast"
+import { FaMoneyBillWave, FaTrash, FaInfoCircle, FaShoppingCart } from "react-icons/fa";
 
 
 
@@ -56,15 +57,23 @@ const Cart = () => {
                                         </div>
                                     </div>
                                     <div className="flex items-center space-x-4">
-                                        <button onClick={() => handleBuy(item.product)} className="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded">Buy Now</button>
-                                        <button onClick={() => handleRemove(item)} className="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded">Remove</button>
-                                        <button onClick={() => handleDetails(item.product)} className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">View Details</button>
+                                        <button onClick={() => handleBuy(item.product)} className="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded flex items-center justify-center gap-2">
+                                            <FaMoneyBillWave /> Buy Now
+                                        </button>
+                                        <button onClick={() => handleRemove(item)} className="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded flex items-center justify-center gap-2">
+                                            <FaTrash /> Remove
+                                        </button>
+                                        <button onClick={() => handleDetails(item.product)} className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded flex items-center justify-center gap-2">
+                                            <FaInfoCircle /> View Details
+                                        </button>
 
                                     </div>
                                 </div>
                             ) : null
                         ))}
-                        <button onClick={handleBuyAll}>Buy All</button>
+                        <button onClick={handleBuyAll} className="w-full bg-indigo-500 hover:bg-indigo-700 text-white font-bold py-3 px-4 rounded-lg flex items-center justify-center gap-2 mt-8">
+                            <FaShoppingCart /> Buy All
+                        </button>
                     </div>
                 ) : (
                     <p className="text-center text-gray-600">Your cart is empty.</p>

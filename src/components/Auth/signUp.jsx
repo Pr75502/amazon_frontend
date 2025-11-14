@@ -3,6 +3,7 @@ import { useDispatch } from "react-redux";
 import { register } from "../../features/userSlice";
 import { toast } from "react-hot-toast";
 import { useNavigate } from "react-router-dom";
+import { FaUserPlus } from "react-icons/fa";
 
 const SignUp = () => {
     const dispatch = useDispatch();
@@ -63,7 +64,9 @@ const SignUp = () => {
                         Please see our Privacy Notice, our Cookies Notice and our
                         Interest-Based Ads Notice.
                     </p>
-                    <button type="submit" className="w-full bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-lg">Sign Up</button>
+                    <button type="submit" className="w-full bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-lg flex items-center justify-center gap-2">
+                        <FaUserPlus /> Sign Up
+                    </button>
                     <p className="text-center mt-4">
                         Already have an account? <a href="/login" className="text-blue-500 hover:underline">Login</a>
                     </p>

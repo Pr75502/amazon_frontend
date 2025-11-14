@@ -4,6 +4,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { toast } from "react-hot-toast";
 import { myProducts } from "../../features/productSlice";
+import { FaPlus, FaEdit, FaTrash } from "react-icons/fa";
 
 const AddProductUser = () => {
   const dispatch = useDispatch();
@@ -36,7 +37,7 @@ const AddProductUser = () => {
     try {
       await dispatch(addProduct(formData)).unwrap();
       toast.success("Product added successfully");
-      navigate("/homepage");
+      // navigate("/homepage");
       nameRef.current.value = "";
       descriptionRef.current.value = "";
       priceRef.current.value = "";
@@ -99,9 +100,9 @@ const AddProductUser = () => {
           />
           <button
             type="submit"
-            className="w-full bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-lg"
+            className="w-full bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-lg flex items-center justify-center gap-2"
           >
-            Add Product
+            <FaPlus /> Add Product
           </button>
         </form>
 
@@ -132,15 +133,15 @@ const AddProductUser = () => {
                     </p>
                     <button
                       onClick={() => navigate(`/edit-product/${product._id}`)}
-                      className="w-full bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded-lg mt-2"
+                      className="w-full bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded-lg mt-2 flex items-center justify-center gap-2"
                     >
-                      Edit
+                      <FaEdit /> Edit
                     </button>
                     <button
                       onClick={() => handleDelete(product._id)}
-                      className="w-full bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded-lg mt-2"
+                      className="w-full bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded-lg mt-2 flex items-center justify-center gap-2"
                     >
-                      Delete
+                      <FaTrash /> Delete
                     </button>
                   </div>
                 </div>

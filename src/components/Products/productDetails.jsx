@@ -6,6 +6,7 @@ import { addToCart } from "../../features/cartSlice";
 import { toast } from "react-hot-toast";
 import Reviews from "./Reviews";
 import ReviewForm from "./ReviewForm";
+import { FaCartPlus, FaMoneyBillWave } from "react-icons/fa";
 
 
 const ProductDetails = () => {
@@ -45,15 +46,15 @@ const ProductDetails = () => {
                             <p className="text-gray-600 mb-8">{details.description}</p>
                             <button
                                 onClick={handleAddToCart}
-                                className="bg-yellow-500 hover:bg-yellow-600 text-black font-bold py-2 px-4 rounded"
+                                className="bg-yellow-500 hover:bg-yellow-600 text-black font-bold py-2 px-4 rounded flex items-center justify-center gap-2"
                             >
-                                Add to Cart
+                                <FaCartPlus /> Add to Cart
                             </button>
                             <button
 
-                                className="bg-yellow-500 hover:bg-yellow-600 text-black font-bold py-2 px-4 rounded"
+                                className="bg-green-500 hover:bg-green-600 text-white font-bold py-2 px-4 rounded flex items-center justify-center gap-2 ml-2"
                             >
-                                Buy Now
+                                <FaMoneyBillWave /> Buy Now
                             </button>
                         </div>
                     </div>
