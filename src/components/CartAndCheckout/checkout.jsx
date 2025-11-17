@@ -46,7 +46,7 @@ const Checkout = () => {
    }
 
    try {
-     const newOrder = await dispatch(createOrder(total)).unwrap();
+     const newOrder = await dispatch(createOrder({ amount: total })).unwrap();
 
      const options = {
        key: import.meta.env.VITE_RAZORPAY_KEY_ID,

@@ -67,6 +67,15 @@ const HomePage = () => {
         }
     };
 
+    const handleBuyNow = async (product) => {
+        if (token) {
+            await dispatch(addToCart(product));
+            navigate("/checkout");
+        } else {
+            alert('Please log in to continue');
+        }
+    };
+
    
     const indexOfLastProduct = currentPage * productsPerPage;
     const indexOfFirstProduct = indexOfLastProduct - productsPerPage;
@@ -127,9 +136,7 @@ const HomePage = () => {
                                         </button>
 
                                         <button
-                                            onClick={() => {
-                                                navigate("/checkout");
-                                            }}
+                                            onClick={() => handleBuyNow(product)}
                                             className="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded flex items-center justify-center gap-2"
                                         >
                                             <FaMoneyBillWave /> Buy Now

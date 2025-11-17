@@ -24,7 +24,7 @@ const Navbar = () => {
     };
 
     return (
-        <div className="bg-gray-900 text-white flex justify-between items-center h-16 px-4">
+        <div className="bg-yellow-500 text-white flex justify-between items-center h-16 px-4">
             <a href="/" className="text-white no-underline">
                 <div className="flex items-center gap-2">
                     <FaAmazon size={28} />

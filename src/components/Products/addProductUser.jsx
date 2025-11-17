@@ -21,6 +21,7 @@ const AddProductUser = () => {
   }, [dispatch]);
 
   const myProductsData = useSelector((state) => state.product.myProducts);
+  const error = useSelector((state) => state.product.error);
   console.log(myProductsData);
 
   const handleSubmit = async (e) => {
@@ -106,9 +107,15 @@ const AddProductUser = () => {
           </button>
         </form>
 
-        <h1 className="text-xl font-bold text-center text-gray-800 my-8">
+        {/* <h1 className="text-xl font-bold text-center text-gray-800 my-8">
           Products Added
-        </h1>
+        </h1> */}
+        {/* {error && error !== "loading..." && (
+          <div className="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded relative mb-4">
+            <strong className="font-bold">Error:</strong>
+            <span className="block sm:inline"> {error}</span>
+          </div>
+        )} */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
           {myProductsData &&
             myProductsData.map((product) => {

@@ -73,3 +73,52 @@ src
 ├── features
 └── ...
 ```
+
+## Screenshots
+
+<table>
+  <tr>
+    <td><img src="public/images/Screenshot%202025-11-17%20191412.png" width="45%"></td>
+    <td><img src="public/images/Screenshot%202025-11-17%20191437.png" width="45%"></td>
+  </tr>
+  <tr>
+    <td><img src="public/images/Screenshot%202025-11-17%20191519.png" width="45%"></td>
+    <td><img src="public/images/Screenshot%202025-11-17%20191608.png" width="45%"></td>
+  </tr>
+  <tr>
+    <td><img src="public/images/Screenshot%202025-11-17%20191644.png" width="45%"></td>
+    <td><img src="public/images/Screenshot%202025-11-17%20191740.png" width="45%"></td>
+  </tr>
+  <tr>
+    <td><img src="public/images/Screenshot%202025-11-17%20194514.png" width="45%"></td>
+    <td><img src="public/images/Screenshot%202025-11-17%20194544.png" width="45%"></td>
+  </tr>
+  <tr>
+    <td><img src="public/images/Screenshot%202025-11-17%20194639.png" width="45%"></td>
+    <td><img src="public/images/Screenshot%202025-11-17%20195309.png" width="45%"></td>
+  </tr>
+  <tr>
+    <td><img src="public/images/Screenshot%202025-11-17%20195424.png" width="45%"></td>
+    <td><img src="public/images/Screenshot%202025-11-17%20195458.png" width="45%"></td>
+  </tr>
+  <tr>
+    <td><img src="public/images/Screenshot%202025-11-17%20195524.png" width="45%"></td>
+    <td><img src="public/images/Screenshot%202025-11-17%20202658.png" width="45%"></td>
+  </tr>
+  <tr>
+    <td><img src="public/images/Screenshot%202025-11-17%20202715.png" width="45%"></td>
+    <td><img src="public/images/Screenshot%202025-11-17%20202741.png" width="45%"></td>
+  </tr>
+  <tr>
+    <td><img src="public/images/Screenshot%202025-11-17%20202756.png" width="45%"></td>
+    <td><img src="public/images/Screenshot%202025-11-17%20202812.png" width="45%"></td>
+  </tr>
+  <tr>
+    <td><img src="public/images/Screenshot%202025-11-17%20202840.png" width="45%"></td>
+    <td><img src="public/images/Screenshot%202025-11-17%20202915.png" width="45%"></td>
+  </tr>
+  <tr>
+    <td><img src="public/images/Screenshot%202025-11-17%20202950.png" width="45%"></td>
+    <td></td>
+  </tr>
+</table>
