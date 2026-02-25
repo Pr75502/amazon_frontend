@@ -1,6 +1,6 @@
 import { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { useParams } from "react-router-dom";
+import { useParams, useNavigate } from "react-router-dom";
 import { productDetails } from "../../features/productSlice";
 import { addToCart } from "../../features/cartSlice";
 import { toast } from "react-hot-toast";
@@ -12,6 +12,7 @@ import { FaCartPlus, FaMoneyBillWave } from "react-icons/fa";
 const ProductDetails = () => {
     const { id } = useParams();
     const dispatch = useDispatch();
+    const navigate = useNavigate();
     const details = useSelector((state) => state.product.details);
 
     useEffect(() => {
@@ -21,7 +22,15 @@ const ProductDetails = () => {
     const handleAddToCart = () => {
         dispatch(addToCart(details));
         toast.success("Item added to cart");
+    };
 
+    const handleBuyNow = async () => {
+        try {
+            await dispatch(addToCart(details)).unwrap();
+            navigate('/checkout');
+        } catch (error) {
+            toast.error(error.message || "Failed to initiate purchase");
+        }
     };
 
     return (
@@ -44,18 +53,20 @@ const ProductDetails = () => {
                                 ₹{details.price}
                             </p>
                             <p className="text-gray-600 mb-8">{details.description}</p>
-                            <button
-                                onClick={handleAddToCart}
-                                className="bg-yellow-500 hover:bg-yellow-600 text-black font-bold py-2 px-4 rounded flex items-center justify-center gap-2"
-                            >
-                                <FaCartPlus /> Add to Cart
-                            </button>
-                            <button
-
-                                className="bg-green-500 hover:bg-green-600 text-white font-bold py-2 px-4 rounded flex items-center justify-center gap-2 ml-2"
-                            >
-                                <FaMoneyBillWave /> Buy Now
-                            </button>
+                            <div className="flex">
+                                <button
+                                    onClick={handleAddToCart}
+                                    className="bg-yellow-500 hover:bg-yellow-600 text-black font-bold py-2 px-4 rounded flex items-center justify-center gap-2"
+                                >
+                                    <FaCartPlus /> Add to Cart
+                                </button>
+                                <button
+                                    onClick={handleBuyNow}
+                                    className="bg-green-500 hover:bg-green-600 text-white font-bold py-2 px-4 rounded flex items-center justify-center gap-2 ml-2"
+                                >
+                                    <FaMoneyBillWave /> Buy Now
+                                </button>
+                            </div>
                         </div>
                     </div>
                 )}

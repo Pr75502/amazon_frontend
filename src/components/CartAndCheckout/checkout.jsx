@@ -22,7 +22,9 @@ const Checkout = () => {
         if (cartItems) {
             let sum = 0;
             cartItems.forEach((item) => {
-                sum += item.product.price * item.quantity;
+                if (item.product) {
+                    sum += item.product.price * item.quantity;
+                }
             });
             setTotal(sum);
         }
@@ -124,13 +126,15 @@ const loadRazorpayScript = (src) => {
                             <h2 className="text-2xl font-bold text-gray-800 mb-6">Order Summary</h2>
                             {cartItems &&
                                 cartItems.map((item) => (
-                                    <div key={item.product._id} className="flex justify-between items-center mb-4">
-                                        <div>
-                                            <h3 className="font-semibold text-gray-800">{item.product.name}</h3>
-                                            <p className="text-gray-600">Quantity: {item.quantity}</p>
+                                    item.product && (
+                                        <div key={item.product._id} className="flex justify-between items-center mb-4">
+                                            <div>
+                                                <h3 className="font-semibold text-gray-800">{item.product.name}</h3>
+                                                <p className="text-gray-600">Quantity: {item.quantity}</p>
+                                            </div>
+                                            <p className="font-semibold text-gray-800">₹{item.product.price * item.quantity}</p>
                                         </div>
-                                        <p className="font-semibold text-gray-800">₹{item.product.price * item.quantity}</p>
-                                    </div>
+                                    )
                                 ))}
                             <hr className="my-4" />
                             <div className="flex justify-between mt-4">

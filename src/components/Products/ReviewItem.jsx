@@ -12,7 +12,7 @@ const ReviewItem = ({ review, user, onEdit, onDelete }) => {
       try {
         // The review object from the API has review.user as a string ID.
         const response = await axios.get(`/users/${review.user}`);
-        if (response.data && response.data.data.name) {
+        if (response.data?.data?.name) {
           setAuthorName(response.data.data.name);
         }
       } catch (error) {
